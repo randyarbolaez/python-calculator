@@ -31,7 +31,10 @@ if (userOption == "1"):
         case "-":
             print(num_one, "-" ,num_two , " = ",num_one - num_two)
         case "/":
-            print(num_one, "/" ,num_two , " = ", num_one / num_two)
+            if num_two is 0:
+                print("Can't divide by zero, champ.")
+            else:
+                print(num_one, "/" ,num_two , " = ", num_one / num_two)
         case "x":
             print(num_one, "x" ,num_two , " = ",num_one * num_two)
         case "*":
