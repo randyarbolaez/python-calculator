@@ -1,43 +1,61 @@
-print("Welcome to Calculator. Main Menu")
+print("Welcome to Calculator")
 
 def mainMenu():
+    print("\nMain menu.")
     print("1. Insert two numbers and operator.")
     print("2. Insert an expression.") # TODO    
+    print("3. Exit.")
 
-mainMenu()
+userOption = 0
 
-userOption = input("Option: ")
+while userOption >= 0:
+    mainMenu()
+    userOption = input("\nOption: ")
 
-if (userOption == "1"):
-    operators = ["+", "-", "/", "x", "*"]
-    num_one = input("Enter first number: ")
-    num_two = input("Enter second number: ")
-    operator = input("Enter an operator(+,-,/,x,*): ")
+    while (not userOption.isnumeric()) or (not (0 <= int(userOption) <= 3)):    
+        if not userOption.isnumeric():
+                userOption = input("You didn't input an number, please select one: ")
+        if not 0 <= int(userOption) <= 3:
+                userOption = input("You selected a number, but not one of the options. Please select one of the options: ")
 
-    while (not num_one.isnumeric()) or (not num_two.isnumeric()) or (not operator in operators):
-        if(not num_one.isnumeric()):
-            num_one = input("The first number isn't an number, please enter an integer for the first number: ")
-        if(not num_two.isnumeric()):
-            num_two = input("The second number isn't an number, please enter an integer for the second number: ")
-        if(not operator in operators):
-            operator = input("The operator doesn't make sense, please select one(+,-,/,x,*) : ")
+    userOption = int(userOption)
 
-    num_one = int(num_one)
-    num_two = int(num_two)
 
-    match operator:
-        case "+":
-            print(num_one, "+" ,num_two , " = ",num_one + num_two)
-        case "-":
-            print(num_one, "-" ,num_two , " = ",num_one - num_two)
-        case "/":
-            if num_two is 0:
-                print("Can't divide by zero, champ.")
-            else:
-                print(num_one, "/" ,num_two , " = ", num_one / num_two)
-        case "x":
-            print(num_one, "x" ,num_two , " = ",num_one * num_two)
-        case "*":
-            print(num_one, "x" ,num_two , " = ",num_one * num_two)
-else:
-    print("Feature not yet available.")
+    if (userOption == 1):
+        operators = ["+", "-", "/", "x", "*"]
+        num_one = input("Enter first number: ")
+        num_two = input("Enter second number: ")
+        operator = input("Enter an operator(+,-,/,x,*): ")
+
+        while (not num_one.isnumeric()) or (not num_two.isnumeric()) or (not operator in operators):
+            if(not num_one.isnumeric()):
+                num_one = input("The first number isn't an number, please enter an integer for the first number: ")
+            if(not num_two.isnumeric()):
+                num_two = input("The second number isn't an number, please enter an integer for the second number: ")
+            if(not operator in operators):
+                operator = input("The operator doesn't make sense, please select one(+,-,/,x,*) : ")
+
+        num_one = int(num_one)
+        num_two = int(num_two)
+
+        print("\n")
+
+        match operator:
+            case "+":
+                print(num_one, "+" ,num_two , " = ",num_one + num_two)
+            case "-":
+                print(num_one, "-" ,num_two , " = ",num_one - num_two)
+            case "/":
+                if num_two == 0:
+                    print("Can't divide by zero, champ.")
+                else:
+                    print(num_one, "/" ,num_two , " = ", num_one / num_two)
+            case "x":
+                print(num_one, "x" ,num_two , " = ",num_one * num_two)
+            case "*":
+                print(num_one, "x" ,num_two , " = ",num_one * num_two)
+    elif userOption == 3:
+        print("GoodBye.")
+        break
+    else:
+        print("Feature not yet available.")
