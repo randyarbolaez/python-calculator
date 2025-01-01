@@ -1,3 +1,4 @@
+operators = ["+", "-", "/", "x", "*"]
 print("Welcome to Calculator")
 
 def mainMenu():
@@ -5,6 +6,16 @@ def mainMenu():
     print("1. Insert two numbers and operator.")
     print("2. Insert an expression.") # TODO    
     print("3. Exit.")
+
+# def solveExpression(expression):
+#     i = 0
+#     j = 0
+#     while i < len(operators):
+#         if len(expression.split(operators[i])) > 1:
+#             break
+#         i+=1
+
+#     print(operators[i], " dsfsf s", expression.split())
 
 userOption = 0
 
@@ -22,7 +33,6 @@ while userOption >= 0:
 
 
     if (userOption == 1):
-        operators = ["+", "-", "/", "x", "*"]
         num_one = input("Enter first number: ")
         num_two = input("Enter second number: ")
         operator = input("Enter an operator(+,-,/,x,*): ")
@@ -58,4 +68,11 @@ while userOption >= 0:
         print("GoodBye.")
         break
     else:
-        print("Feature not yet available.")
+        userExpression = input("Insert expression: ")
+        leftSide = userExpression.split("=")[0].replace(" ", "")
+        rightSide = userExpression.split("=")[1].replace(" ", "")
+
+        # solveExpression(leftSide)
+        print()
+        print()
+        # solveExpression(rightSide)
