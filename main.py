@@ -7,6 +7,21 @@ def mainMenu():
     print("2. Insert an expression.") # TODO    
     print("3. Exit.")
 
+def validExpression(expression):
+    stack = []
+    for i in expression:
+        if (i == "(") or (i == "{") or (i == "["):
+            stack.append(i)
+        elif i == (")" or "}" or "]") and (len(stack) == 0):
+            return False    
+        elif i == ")" and stack[-1] == "(":
+            stack.pop()
+        elif i == "}" and stack[-1] == "{":
+            stack.pop()
+        elif i == "]" and stack[-1] == "[":
+            stack.pop()
+    return len(stack) == 0
+
 # def solveExpression(expression):
 #     i = 0
 #     j = 0
@@ -69,10 +84,12 @@ while userOption >= 0:
         break
     else:
         userExpression = input("Insert expression: ")
-        leftSide = userExpression.split("=")[0].replace(" ", "")
-        rightSide = userExpression.split("=")[1].replace(" ", "")
+        print(validExpression(userExpression))
+
+        # leftSide = userExpression.split("=")[0].replace(" ", "")
+        # rightSide = userExpression.split("=")[1].replace(" ", "")
 
         # solveExpression(leftSide)
-        print()
-        print()
+        # print()
+        # print()
         # solveExpression(rightSide)
