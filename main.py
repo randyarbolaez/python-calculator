@@ -84,10 +84,12 @@ while userOption >= 0:
         break
     else:
         userExpression = input("Insert expression: ")
-        print(validExpression(userExpression))
 
-        # leftSide = userExpression.split("=")[0].replace(" ", "")
-        # rightSide = userExpression.split("=")[1].replace(" ", "")
+        leftSide = userExpression.split("=")[0].replace(" ", "")
+        rightSide = userExpression.split("=")[1].replace(" ", "")
+        
+        print(True == (validExpression(leftSide) and validExpression(rightSide)))
+        # print(validExpression(userExpression))
 
         # solveExpression(leftSide)
         # print()
